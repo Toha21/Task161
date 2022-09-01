@@ -9,7 +9,7 @@ public class GameTest {
     Player player3 = new Player(3,"player3",1);
 
     @Test
-    public void test() throws NotRegisteredException {
+    public void playersAreEqualInStrength() throws NotRegisteredException {
         Game game = new Game();
         game.register(player1);
         game.register(player2);
@@ -19,9 +19,9 @@ public class GameTest {
         Assertions.assertEquals(expected,actual);
     }
     @Test
-    public void test1() throws NotRegisteredException{
+    public void theFirstPlayerIsStronger() throws NotRegisteredException{
         Game game = new Game();
-      //  game.register(player1);
+
         game.register(player2);
         game.register(player3);
 
@@ -30,7 +30,7 @@ public class GameTest {
         Assertions.assertEquals(expected,actual);
     }
     @Test
-    public void test2() throws NotRegisteredException{
+    public void theSecondPlayerIsStronger() throws NotRegisteredException{
         Game game = new Game();
         //  game.register(player1);
         game.register(player2);
@@ -41,21 +41,19 @@ public class GameTest {
         Assertions.assertEquals(expected,actual);
     }
     @Test
-    public void test3() throws NotRegisteredException{
+    public void ifTheFirstPlayerIsNotRegistered(){
         Game game = new Game();
         //  game.register(player1);
         game.register(player2);
-        game.register(player3);
 
         Assertions.assertThrows(NotRegisteredException.class,
     () -> game.round("player1","player2"));
     }
     @Test
-    public void test4() throws NotRegisteredException{
+    public void ifTheSecondPlayerIsNotRegistered(){
         Game game = new Game();
           game.register(player1);
        // game.register(player2);
-        game.register(player3);
 
         Assertions.assertThrows(NotRegisteredException.class,
                 () -> game.round("player1","player2"));
